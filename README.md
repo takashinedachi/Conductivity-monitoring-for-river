@@ -1,8 +1,8 @@
 # Conductivity-monitoring-for-river  
-For estimation of pollution level as BOD5 converted by conductibity based on relation between monitored real values BOD5 and condctivity aplicating to Rocha river in Cochabamba, Bolivia.  
-As JICA technical cooperation project GIAC, pilot area, Maylanco river in which located upper stream of Rocha river, municipality of Sacaba.  
+For estimation of pollution level as BOD5 converted by conductivity based on relation between monitored values BOD5 and condctivity aplicating to Rocha river in Cochabamba, Bolivia.  
+As JICA technical cooperation project GIAC, pilot area, Maylanco river in which is located upper stream of Rocha river, municipality of Sacaba.  
   
-Para estimation de grado de contaminacion como DBO5 convertido por conductividad basado en relation entre valores monitoreados reales DBO5 y conductividad aplicando a rio Rocha en Cochabamba, Bolivia.  
+Para estimation de grado de contaminacion como DBO5 convertido por conductividad basado en relation entre valores monitoreados DBO5 y conductividad aplicando a rio Rocha en Cochabamba, Bolivia.  
 Como proyecto GIAC, area piloto, rio Maylanco que ubica arriba de rio ROcha, municipio Sacaba  
 
 In spanish (En español)  
