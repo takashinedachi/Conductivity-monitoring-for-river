@@ -20,7 +20,7 @@ Elaboradcion y instalacion del equipo por
 - Takashi Nedachi, Experto de JICA, Calidad de agua, Proyecto GIAC-JICA  
 - Juan Pablo Patiño, Coordinador de la Unidada de Gestion de la Cuenca del rio Rocha(UGCR), Secretaria Departamental de Madre Tierra, Governacion de Cochabamba(GADC-SDMT)  
 - Eduardo Mamani, Tecnico, UGCR, GADC-SDMT  
-- GUillermo Alturarra, Social, UGCR, GADC-SDMT  
+- Guillermo Alturarra, Social, UGCR, GADC-SDMT  
 - Jorge Párraga, Tecnico de mecanismo de cooperación, Priyecto GIAC-JICA  
   
 Evaluacion de la calidad de agua por
