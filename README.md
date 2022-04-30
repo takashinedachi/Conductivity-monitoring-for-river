@@ -1,9 +1,9 @@
 # Conductivity-monitoring-for-river  
-For estimation of pollution level as BOD5 converted by conductivity based on relation between monitored values BOD5 and condctivity aplicating to Rocha river in Cochabamba, Bolivia.  
-As JICA technical cooperation project GIAC, pilot area, Maylanco river in which is located upper stream of Rocha river, municipality of Sacaba.  
-  
-Para estimation de grado de contaminacion como DBO5 convertido por conductividad basado en relation entre valores monitoreados DBO5 y conductividad aplicando a rio Rocha en Cochabamba, Bolivia.  
-Como proyecto GIAC, area piloto, rio Maylanco que ubica arriba de rio ROcha, municipio Sacaba  
+In English: This is potential use for an alternative estimation method of organic pollution level as BOD5 converted by the conductivity with this Arduino system based on its high correlation between monitored values, BOD5 and conductivity, by field survey. This tool may be applicable for urbanization area with insufficient and vulnerable basic infrastructures such as wastewater treatment plants in which main pollution occurred by domestic wastewater, such as Rocha river basin in Cochabamba, Bolivia. This trial and error to evaluate the potential use conducted by JICA technical cooperation project GIAC with Prefectural government of Cochabamba, Municipality of Sacaba in the Maylanco river basin in which is located upper stream of Rocha river, and Water and sewage public corporation in Sacaba, EMAPAS.  
+En Español:  
+
+Para estimation de grado de contaminacion organica como DBO5 convertido por conductividad basado en relation entre valores monitoreados DBO5 y conductividad aplicando a rio Rocha en Cochabamba, Bolivia.  
+Como proyecto GIAC, area piloto, rio Maylanco que ubica arriba de rio Rocha, municipio Sacaba  
 
 In spanish (En español)  
 Esquema eléctrico de sistema de microcontrolador Arduino Nano (Seeeduino Nano)  
