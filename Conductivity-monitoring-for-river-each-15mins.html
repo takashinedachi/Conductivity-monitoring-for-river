@@ -1,0 +1,237 @@
+// RTC-DS18B20 (DS1307),
+// SD card_RTC
+// Conductivity
+// for Seeeduino Nano
+
+#include <SPI.h>
+#include <SD.h>                 // SD card
+#include <Wire.h>               // Include I2C library 
+#include <RTClib.h>
+#include <OneWire.h>            // Include OneWire library // water temp
+#include <DallasTemperature.h>  // Include the DS18B20 library 
+#include <GravityTDS.h>         // TDS/conductivity
+#include <EEPROM.h>             // TDS/conductivity
+#include <LiquidCrystal_I2C.h>
+
+#include <avr/sleep.h>                  // スリープライブラリ
+#include <avr/wdt.h>                    // ウォッチドッグタイマー ライブラリ
+
+#define DS18B20_PIN A2   // Define pin for DS18B20 Arduino D2 
+#define TdsSensorPin A1  // TDS/conductivity
+
+RTC_DS1307 RTC;                         // RTC module 
+OneWire oneWire(DS18B20_PIN);           // Set OneWire reference 
+DallasTemperature sensors(&oneWire);    // Initialize DS18B20 
+GravityTDS gravityTds;                  // TDS/conductivity
+LiquidCrystal_I2C lcd(0x27, 16,2);  // LCD 1692A monitor - I2c : SDA-A4 SCL-A5 VCC-5V GND
+
+const int donePin = 5;  // PowerSwitch TPL5110
+const int chipSelect = 4;      // SD card
+float temperature = 25,tdsValue = 0; // TDS/conductivity
+
+void setup() {
+
+// LCD 1602A monitor
+  lcd.begin( 16, 2 );
+  lcd.clear();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print(" Hello,");
+  lcd.setCursor(0, 1);
+  lcd.print(" GIAC members!");
+  delay(1500);
+ 
+  Wire.begin(); // Initialize I2C 
+  RTC.begin(); // Initialize RTC 
+  Serial.begin(9600);  //Start serial output 
+  Serial.println("Start date, time and temperature"); // Output the welcome text on the serial monitor 
+  
+if (! RTC.isrunning()) {   // Check whether RTC is running 
+                           // Set the current date and time if the clock is not yet running 
+}
+// time adjust below
+DateTime now;     //RTCから現在時刻を取得する
+now = RTC.now();  //RTCから取得した時間よりスケッチをコンパイルした時間が新しい場合、コンパイル時間に合わせる
+DateTime compiled = DateTime(__DATE__, __TIME__);if (now.unixtime() < compiled.unixtime()) {
+RTC.adjust(DateTime(__DATE__, __TIME__))    ;
+  
+   Serial.println("Real-time clock was started and set to system time. ");
+ }
+ else Serial.println("Real time clock is already running.");
+
+  lcd.begin( 16, 2 );
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(" Water Quality");
+  lcd.setCursor(0, 1);
+  lcd.print(" Monitoring");
+  delay(3000);
+
+pinMode(10, OUTPUT);
+   
+if(!SD.begin(chipSelect)){  // check SD card
+Serial.println("card faild, or not present");
+while(1){  //loop
+ }
+return;
+}
+if(SD.begin(chipSelect)){  // check SD card
+  lcd.begin( 16, 2 );
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(" SD card ok");
+  lcd.setCursor(0, 1);
+  lcd.print(" Data logging");
+  delay(3000);
+return;
+}
+
+Serial.println("card initialized");
+  
+  sensors.begin();  // Start DS18B20 
+  
+  gravityTds.setPin(TdsSensorPin);
+  gravityTds.setAref(5.0);  //reference voltage on ADC, default 5.0V on Arduino UNO
+  gravityTds.setAdcRange(1024);  //1024 for 10bit ADC;4096 for 12bit ADC
+  gravityTds.begin();  //initialization
+
+pinMode(donePin, OUTPUT);  // PowerSwitch TPL5110
+digitalWrite(donePin, LOW);  // PowerSwitch TPL5110
+
+}
+
+void loop() {
+
+for(int i=0; i<5; i=i+1){ //以下繰り返し 5回
+//Time
+  DateTime now=RTC.now();   // Get the current time 
+  show_time_and_date(now);  // Output date and time 
+//Temp
+  sensors.requestTemperatures();                 // Read out temperature sensor 
+  show_temperature(sensors.getTempCByIndex(0));  // Output temperature 
+  Serial.print(sensors.getTempCByIndex(0),1); // 0-> 0 1-> 0.0
+  Serial.print(" "); //
+  Serial.println("degreeC"); //
+//Conductivity
+  gravityTds.setTemperature(sensors.getTempCByIndex(0));  // set the temperature and execute temperature compensation ※temperature -> sensors.getTempCByIndex(0)
+  gravityTds.update();  //sample and calculate
+  tdsValue = gravityTds.getTdsValue();  // then get the value
+               // Serial.print(tdsValue,0); // 0-> 0 1-> 0.0 do not show TDS
+               // Serial.println("mg/L"); //　do not show TDS
+//  Serial.print(tdsValue,0); // 0-> 0 1-> 0.0// 消す211222
+//  Serial.print(" "); //// 消す211222
+//  Serial.println("mg/L(TDS)"); //// 消す211222
+  Serial.print(tdsValue*=1.9742,2); // The TDS scale uses 2 µS/cm = 1 ppm(mg/L) // Orignal Serial.print(tdsValue/=2,2) --> Orignal Serial.print(tdsValue*=1.9742,2) 
+  Serial.print(" "); //
+  Serial.println("μS/cm"); //
+  
+// Monitor temp
+  lcd.begin( 16, 2 );
+  lcd.clear();
+  lcd.setCursor(1, 0); 
+  lcd.print(sensors.getTempCByIndex(0));
+  lcd.print(" degreeC"); 
+// Monitor TDS conductivity
+  lcd.setCursor(1, 1); 
+  lcd.print(tdsValue);
+  lcd.print(" uS/cm");
+  delay(2000); // Wait 2 seconds for the next issue 5000->100 ここで2秒待ちで、5秒間隔になる。稼動40秒程度
+}
+//スリープ繰り返し、8secを5回で50秒、
+for(int i=0; i<90; i=i+1){
+  delayWDT(9);  //1 (9) -> 8 sec 5回で50秒、30回で5分？ 30回で5:05くらい、90サイクル 15分間隔
+}
+  
+//ループここまで。
+}
+
+
+// Output date and time 
+void show_time_and_date(DateTime datetime){
+//time
+  String s;
+   DateTime now = RTC.now();
+   s = now.year();
+   s.concat('/');
+   s.concat(now.month());
+   s.concat('/');
+   s.concat(now.day());
+   s.concat(' ');
+   s.concat(now.hour());
+   s.concat(':');
+   s.concat(now.minute());
+   s.concat(':');
+   s.concat(now.second());
+
+// Monitor Time
+  lcd.begin( 16, 2 );
+  lcd.clear();
+  lcd.setCursor(0, 0); 
+  lcd.println("ano/mes/fecha h:");
+  lcd.setCursor(0, 1); 
+  lcd.println(s);
+Serial.println(s); 
+
+File dataFile = SD.open("datalog.txt", FILE_WRITE);
+dataFile.print(s);
+dataFile.print(",");
+dataFile.print(sensors.getTempCByIndex(0),2);
+dataFile.print(",");
+dataFile.print("degreeC");
+dataFile.print(",");
+dataFile.print(tdsValue);
+dataFile.print(",");
+dataFile.println("uS/cm");
+dataFile.close();
+
+   delay(100); // 2000->100
+
+  digitalWrite(donePin, LOW);   // PowerSwitch TPL5110
+  delay(100);  // PowerSwitch TPL5110
+  digitalWrite(donePin, HIGH);   // PowerSwitch TPL5110
+  delay(100);  // PowerSwitch TPL5110
+
+}
+void show_temperature(float temp){
+}
+void show_tdsValue(float cond){
+}
+
+void delayWDT(unsigned long t) {        // パワーダウンモードでdelayを実行
+  delayWDT_setup(t);                    // ウォッチドッグタイマー割り込み条件設定
+  ADCSRA &= ~(1 << ADEN);               // ADENビットをクリアしてADCを停止（120μA節約）
+  set_sleep_mode(SLEEP_MODE_PWR_DOWN);  // パワーダウンモード
+  sleep_enable();
+
+  sleep_mode();                         // ここでスリープに入る
+
+  sleep_disable();                      // WDTがタイムアップでここから動作再開 
+  ADCSRA |= (1 << ADEN);                // ADCの電源をON (|=が!=になっていたバグを修正2014/11/17)
+
+}
+
+void delayWDT_setup(unsigned int ii) {  // ウォッチドッグタイマーをセット。
+  // 引数はWDTCSRにセットするWDP0-WDP3の値。設定値と動作時間は概略下記
+  // 0=16ms, 1=32ms, 2=64ms, 3=128ms, 4=250ms, 5=500ms
+  // 6=1sec, 7=2sec, 8=4sec, 9=8sec
+  byte bb;
+  if (ii > 9 ){                         // 変な値を排除
+    ii = 9;
+  }
+  bb =ii & 7;                           // 下位3ビットをbbに
+  if (ii > 7){                          // 7以上（7.8,9）なら
+    bb |= (1 << 5);                     // bbの5ビット目(WDP3)を1にする
+  }
+  bb |= ( 1 << WDCE );
+
+  MCUSR &= ~(1 << WDRF);                // MCU Status Reg. Watchdog Reset Flag ->0
+  // start timed sequence
+  WDTCSR |= (1 << WDCE) | (1<<WDE);     // ウォッチドッグ変更許可（WDCEは4サイクルで自動リセット）
+  // set new watchdog timeout value
+  WDTCSR = bb;                          // 制御レジスタを設定
+  WDTCSR |= _BV(WDIE);
+} 
+
+ISR(WDT_vect) {                         // WDTがタイムアップした時に実行される処理
+  //  wdt_cycle++;                        // 必要ならコメントアウトを外す
+}
