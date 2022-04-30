@@ -28,6 +28,7 @@ Elaboradcion y instalacion del equipo por
 - Juan Pablo Patiño, Coordinador de la Unidad de Gestion de la Cuenca del rio Rocha(UGCR), Secretaria Departamental de Madre Tierra(SDMT), Governacion de Cochabamba(GADC)  
 - Eduardo Mamani, Tecnico, UGCR, GADC-SDMT  
 - Guillermo Alturarra, Social, UGCR, GADC-SDMT  
+- Jimmy Terrazas, Informacion tenica, UGCR, GADC-SDMT  
 - Jorge Párraga, Tecnico de mecanismo de cooperación, Priyecto GIAC-JICA  
   
 Evaluacion de la calidad de agua por
