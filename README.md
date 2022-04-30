@@ -29,7 +29,7 @@ Elaboradcion y instalacion del equipo por
 - Eduardo Mamani, Tecnico, UGCR, GADC-SDMT  
 - Guillermo Alturarra, Social, UGCR, GADC-SDMT  
 - Jimmy Terrazas, Informacion tenica, SDC, GADC-SDMT  
-- Jorge Párraga, Tecnico de mecanismo de cooperación, Priyecto GIAC-JICA  
+- Jorge Párraga, Tecnico de mecanismo de cooperación, Proyecto GIAC-JICA  
   
 Evaluacion de la calidad de agua por
 - Takashi Nedachi, Experto de JICA, Calidad de agua, Proyecto GIAC-JICA  
