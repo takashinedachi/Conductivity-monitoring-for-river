@@ -1,20 +1,18 @@
 # Conductivity-monitoring-for-river  
-In English: This is potential use for an alternative estimation method of organic pollution level as BOD5 converted by the conductivity with this Arduino system based on its high correlation between monitored values, BOD5 and conductivity, by field survey. This tool may be applicable for urbanization area with insufficient and vulnerable basic infrastructures such as wastewater treatment plants in which main pollution occurred by domestic wastewater, such as Rocha river basin in Cochabamba, Bolivia. This trial and error to evaluate the potential use conducted by JICA technical cooperation project GIAC with Prefectural government of Cochabamba, Municipality of Sacaba in the Maylanco river basin in which is located upper stream of Rocha river, and Water and sewage public corporation in Sacaba, EMAPAS.  
-En Español:  
-
-Para estimation de grado de contaminacion organica como DBO5 convertido por conductividad basado en relation entre valores monitoreados DBO5 y conductividad aplicando a rio Rocha en Cochabamba, Bolivia.  
-Como proyecto GIAC, area piloto, rio Maylanco que ubica arriba de rio Rocha, municipio Sacaba  
-
+This is potential use for an alternative estimation method of organic pollution level as BOD5 converted by the conductivity with this Arduino system based on its high correlation between monitored values, BOD5 and conductivity, by field survey. This tool may be applicable for urbanization area with insufficient and vulnerable basic infrastructures such as wastewater treatment plants in which main pollution occurred by domestic wastewater, such as Rocha river basin in Cochabamba, Bolivia. This trial and error to evaluate the potential use conducted by JICA technical cooperation project GIAC with Prefectural government of Cochabamba, Municipality of Sacaba in the Maylanco river basin in which is located upper stream of Rocha river, and Water and sewage public corporation in Sacaba, EMAPAS.  
+(En Español)  
+Es un uso potencial para un método alternativo de estimación del grad de contaminación orgánica como DBO5 convertido por la conductividad con este sistema Arduino basado en su alta correlación entre los valores monitoreados, DBO5 y conductividad, por estudio de campo. Esta herramienta puede ser aplicable para áreas de urbanización con infraestructuras básicas insuficientes y vulnerables, como plantas de tratamiento de aguas residuales en lo que la contaminación principal se ocurre por aguas residuales domésticas, como la cuenca del río Rocha en Cochabamba, Bolivia. Este ensayo y error para evaluar el uso potencial realizado por el proyecto GIAC como la cooperación técnica por JICA con el Gobernacion de Cochabamba, Municipio de Sacaba en la cuenca del río Maylanco en que ubica cabecera de la cuenca del río Rocha, y la empresa pública de agua potable y alcantarillado sanitario en Sacaba, EMAPAS.  
+  
 In spanish (En español)  
-Esquema eléctrico de sistema de microcontrolador Arduino Nano (Seeeduino Nano)  
+Ejemplo del esquema eléctrico de sistema de microcontrolador Arduino Nano (Seeeduino Nano)  
 ![image](https://user-images.githubusercontent.com/104662112/166089554-09cc8612-f527-45e8-a5e1-4feb1c6d57f9.png)
 
-Ejemplo del equipo para aplicar en rio
+Ejemplos del equipo para aplicar en rio
 ![image](https://user-images.githubusercontent.com/104662112/166089643-4306f39e-bb2a-470d-8ae9-d1f51a83115c.png)
 ![image](https://user-images.githubusercontent.com/104662112/166089654-e9f53764-23cb-4020-abc4-487612bcbc74.png)
 ![image](https://user-images.githubusercontent.com/104662112/166089672-83dcc1e2-6b5a-471c-9046-e68fcf68afe0.png)
 
-Especificacion del equipo
+Ejemplo de la specificacion del equipo
 ![image](https://user-images.githubusercontent.com/104662112/166089796-bbbc481f-87e5-4b02-b07f-c204b3456048.png)
   
 Ejemplos de los datos de conductividad µS/cm (amarillo) y nivel de superficie de agua m (azule) en caso del rio Maylanco  
