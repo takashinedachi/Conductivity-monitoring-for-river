@@ -25,7 +25,7 @@ Ejemplo de la correlacion entre DBO5 mg/L (verde) y Conductividad µS/cm (amaril
 
 Elaboradcion y instalacion del equipo por  
 - Takashi Nedachi, Experto de JICA, Calidad de agua, Proyecto GIAC-JICA  
-- Juan Pablo Patiño, Coordinador de la Unidada de Gestion de la Cuenca del rio Rocha(UGCR), Secretaria Departamental de Madre Tierra, Governacion de Cochabamba(GADC-SDMT)  
+- Juan Pablo Patiño, Coordinador de la Unidad de Gestion de la Cuenca del rio Rocha(UGCR), Secretaria Departamental de Madre Tierra(SDMT), Governacion de Cochabamba(GADC)  
 - Eduardo Mamani, Tecnico, UGCR, GADC-SDMT  
 - Guillermo Alturarra, Social, UGCR, GADC-SDMT  
 - Jorge Párraga, Tecnico de mecanismo de cooperación, Priyecto GIAC-JICA  
