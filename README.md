@@ -15,7 +15,7 @@ Ejemplos del equipo para aplicar en rio
 Ejemplo de la specificacion del equipo
 ![image](https://user-images.githubusercontent.com/104662112/166089796-bbbc481f-87e5-4b02-b07f-c204b3456048.png)
   
-Ejemplos de los datos de conductividad µS/cm (amarillo) y nivel de superficie de agua m (azule) en caso del rio Maylanco  
+Ejemplos de los datos de conductividad µS/cm (amarillo) y nivel superfical de agua m (azule) en caso del rio Maylanco  
 ![image](https://user-images.githubusercontent.com/104662112/166091725-485514a6-e287-4be0-948e-a293d78ea0ba.png)
   
   
