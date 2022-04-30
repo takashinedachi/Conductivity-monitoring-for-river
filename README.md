@@ -6,7 +6,7 @@ Para estimation de grado de contaminacion como DBO5 convertido por conductividad
 Como proyecto GIAC, area piloto, rio Maylanco que ubica arriba de rio ROcha, municipio Sacaba  
 
 In spanish (En español)  
-Esquema eléctrico de sistema de microcontrolador Aeduino Nano (Seeduino Nano)  
+Esquema eléctrico de sistema de microcontrolador Arduino Nano (Seeeduino Nano)  
 ![image](https://user-images.githubusercontent.com/104662112/166089554-09cc8612-f527-45e8-a5e1-4feb1c6d57f9.png)
 
 Ejemplo del equipo para aplicar en rio
